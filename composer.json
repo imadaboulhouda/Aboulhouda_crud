@@ -12,7 +12,9 @@
             "email": "imadaboulhouda1@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "doctrine/dbal": "^3.3"
+    },
     "extra": {
         "laravel": {
             "providers": [
