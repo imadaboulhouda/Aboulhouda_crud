@@ -1,0 +1,22 @@
+@extends('layouts.guest')
+@section('content')
+    <div class="container-fluid">
+        <h1>Ajouter une %model%</h1>
+        @if ($errors->any())
+
+            <div class="alert alert-warning">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }} </p>
+                @endforeach
+            </div>
+        @endif
+        <form method="POST" action="{{ route('%model%.update',['%model%'=>$model->id]) }}">
+            %dataShow%
+
+@method('PUT')
+            @csrf
+            <button class="btn btn-primary btn-sm" type="submit">Enregistrer</button>
+        </form>
+
+    </div>
+@endsection

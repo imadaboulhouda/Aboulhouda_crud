@@ -1,0 +1,84 @@
+@extends('layouts.guest')
+@section('content')
+
+    <div class="container-fluid">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Gestion des %model%</h4>
+                <p class="category">Pour gérer les %model%</p>
+                <a href="{{ route('%model%.create') }}" class="btn btn-sm btn-success pull-right">Créer une
+                    %model%</a>
+            </div>
+
+            <div class="content table-responsive table-full-width">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>%col%</th>
+
+                            <th>Date de création</th>
+                            <th>Date de modification</th>
+
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if ($model->count() == 0)
+                            <tr>
+                                <td colspan="5" class="alert alert-warning">Aucun %model% trouvé</td>
+                            </tr>
+                        @endif
+                        @foreach ($model as $el)
+                            <tr>
+                                <td>{{ $el->id }}</td>
+                               <td>{{ $el->%col%}}</td>
+                                <td>{{ date('d/m/Y à H:i', strtotime($el->created_at)) }}</td>
+                                <td>{{ date('d/m/Y à H:i', strtotime($el->updated_at)) }}</td>
+
+                                <td><a href="{{ route('%model%.edit', ['%model%' => $el->id]) }}">Edit</a>
+                                    <form method="POST" action='{{ route('%model%.destroy', ['%model%' => $el->id]) }}'
+                                        onsubmit="return confirm('voulez vous vraiement supprimer ? ');">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm">Supprimer</button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                {{ $model->links() }}
+            </div>
+
+        </div>
+    </div>
+
+
+@endsection
+@section('js')
+    <script>
+        (function($) {
+                $(function() {
+
+                    @if (request()->session()->has('success'))
+                        //
+                        $.notify({
+                        icon: "nc-icon nc-app",
+                        message: "{{ request()->session()->get('success') }}"
+
+                        }, {
+                        type: 'info',
+                        timer: 8000,
+                        placement: {
+                        from: 'top',
+                        align: 'right'
+                        }
+                        });
+                        });
+                    @endif
+
+                })(jQuery);
+    </script>
+@endsection
