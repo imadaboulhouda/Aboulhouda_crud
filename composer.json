@@ -1,25 +1,28 @@
 {
-    "name": "aboulhouda/crud",
-    "description": "Crud laravel",
-    "autoload": {
-        "psr-4": {
-            "Aboulhouda\\Crud\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "imad aboulhouda",
-            "email": "imadaboulhouda1@gmail.com"
-        }
-    ],
-    "require": {
-        "doctrine/dbal": "^3.3"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Aboulhouda\\Crud\\ImadServiceProvider"
-            ]
-        }
+  "name": "aboulhouda/crud",
+  "description": "Crud laravel Created by IMAD ABOULHOUDA",
+  "autoload": {
+    "psr-4": {
+      "Aboulhouda\\Crud\\": "src/"
     }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "imad aboulhouda",
+      "email": "imadaboulhouda1@gmail.com",
+      "homepage": "https://imadaboulhouda.com",
+      "role": "Developer full stack"
+    }
+  ],
+  "require": {
+    "doctrine/dbal": "^3.3"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Aboulhouda\\Crud\\ImadServiceProvider"
+      ]
+    }
+  }
 }
